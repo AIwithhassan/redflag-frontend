@@ -1,0 +1,85 @@
+[
+  {
+    "id": "TC002",
+    "title": "Open the playground from the home page",
+    "description": "Verifies a user can navigate to the home page hero section and click the 'Try the Playground' button to open the Playground view.",
+    "category": "Responsive Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /#hero"
+      },
+      {
+        "type": "action",
+        "description": "Click the 'Try the Playground' button in the hero section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify navigation succeeded and the Playground view is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Open configuration from the playground sidebar",
+    "description": "Verifies a user can open the Playground via the nav bar and then navigate to the Configuration view using the sidebar logo button.",
+    "category": "Responsive Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the Playground navigation button"
+      },
+      {
+        "type": "action",
+        "description": "Click the logo button in the sidebar to open Configuration"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify navigation succeeded and the Configuration view is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Navigate between the main landing page sections",
+    "description": "Verifies a user can navigate between marketing landing page sections (How It Works, Playground, Configuration) using the top navigation bar.",
+    "category": "Marketing Page Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /#hero"
+      },
+      {
+        "type": "action",
+        "description": "Click the 'How It Works' navigation button"
+      },
+      {
+        "type": "action",
+        "description": "Click the 'Playground' navigation button"
+      },
+      {
+        "type": "action",
+        "description": "Click the 'Configuration' navigation button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify navigation succeeded and the final view is displayed"
+      }
+    ],
+    "priority": "High"
+  }
+]
