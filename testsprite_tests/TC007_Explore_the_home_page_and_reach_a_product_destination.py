@@ -1,7 +1,8 @@
 import asyncio
-import re
+import os
 from playwright import async_api
-from playwright.async_api import expect
+
+BASE_URL = os.environ.get("BASE_URL", "http://localhost:3001")
 
 async def run_test():
     pw = None
@@ -9,10 +10,8 @@ async def run_test():
     context = None
 
     try:
-        # Start a Playwright session in asynchronous mode
         pw = await async_api.async_playwright().start()
 
-        # Launch a Chromium browser in headless mode with custom arguments
         browser = await pw.chromium.launch(
             headless=True,
             args=[
@@ -23,34 +22,23 @@ async def run_test():
             ],
         )
 
-        # Create a new browser context (like an incognito window)
         context = await browser.new_context()
-        # Wider default timeout to match the agent's DOM-stability budget;
-        # auto-waiting Playwright APIs (expect, locator.wait_for) inherit this.
         context.set_default_timeout(15000)
-
-        # Open a new page in the browser context
         page = await context.new_page()
 
-        # Interact with the page elements to simulate user flow
-        # -> navigate
-        await page.goto("http://localhost:3001")
+        await page.goto(f"{BASE_URL}/")
         try:
             await page.wait_for_load_state("domcontentloaded", timeout=5000)
         except Exception:
             pass
-        
-        # -> Click the primary CTA 'Try the Playground' to navigate into the product area and verify the playground view and app shell navigation.
-        # button "Try the Playground →"
-        elem = page.locator("xpath=/html/body/div/section/div/div[3]/button").nth(0)
+
+        elem = page.get_by_role("button", name="Try the Playground")
         await elem.wait_for(state="visible", timeout=10000)
         await elem.click()
-        
-        # --> Test passed — verified by AI agent
-        frame = context.pages[-1]
-        current_url = await frame.evaluate("() => window.location.href")
-        assert current_url is not None, "Test completed successfully"
-        await asyncio.sleep(5)
+
+        upload = page.locator("input[type='file']")
+        await upload.wait_for(state="attached", timeout=10000)
+        assert await upload.count() > 0, "Playground view not displayed after clicking Try the Playground"
 
     finally:
         if context:
@@ -61,4 +49,3 @@ async def run_test():
             await pw.stop()
 
 asyncio.run(run_test())
-    
