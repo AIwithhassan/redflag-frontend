@@ -68,7 +68,7 @@ export default function Configuration() {
         <div className="grid grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] gap-[2px] items-start max-md:grid-cols-1">
           <div className="border-2 border-[var(--border)] bg-[var(--bg)] p-[32px]">
             <div className="caption">Configuration</div>
-            <h2 className="font-serif text-[36px] font-[400] leading-[1.2] mb-[12px] max-md:text-[26px]" style={{ fontFamily: "'Instrument Serif', serif" }}>Use your own model provider.</h2>
+            <h2 className="font-serif text-[36px] font-[400] leading-[1.2] mb-[12px] max-md:text-[26px]" style={{ fontFamily: "'Instrument Serif', serif" }}>Select your favourite AI model</h2>
             <p className="text-[14px] leading-[1.7] text-[var(--ink-light)] max-w-[56ch] mb-[28px]">
               RedFlag runs on the platform default out of the box. If you want your own credentials, add an API key and choose a model from OpenAI or Anthropic. Your settings are saved locally in this browser.
             </p>
