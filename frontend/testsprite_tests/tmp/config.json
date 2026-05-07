@@ -1,0 +1,20 @@
+{
+  "status": "init",
+  "scope": "codebase",
+  "type": "frontend",
+  "localEndpoint": "http://localhost:8080/",
+  "serverPort": 62761,
+  "executionArgs": {
+    "projectName": "frontend",
+    "projectPath": "/Users/hassan.mahmood/Documents/hassan-docs/ai-projects-with-hassan/demo-testsprite-tests/frontend",
+    "testIds": [
+      "TC001",
+      "TC002"
+    ],
+    "additionalInstruction": "Run only the first 2 high priority tests (TC001 and TC002) to generate initial results quickly",
+    "serverMode": "production",
+    "envs": {
+      "API_KEY": "sk-user-HTT-9ojODe9MxTKL5LMPtlRYE_9WetmsCwbNK03yS08H5Eo3Hb3q29pUtV6T-OJPFG21lnnHkrwCTiBSF7cr1iRNcnyWxyIH6emzt5EfXHuhEvIJ-whbPwLwqyeDdlnKzbY"
+    }
+  }
+}
