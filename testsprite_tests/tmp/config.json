@@ -1,0 +1,22 @@
+{
+  "status": "init",
+  "localEndpoint": "http://localhost:3001",
+  "localPort": 3001,
+  "type": "frontend",
+  "testScope": "codebase",
+  "executionArgs": {
+    "projectName": "red-flag",
+    "projectPath": "/Users/hassan.mahmood/Documents/hassan-docs/ai-projects-with-hassan/red-flag",
+    "testIds": [
+      "TC007",
+      "TC008",
+      "TC013"
+    ],
+    "additionalInstruction": "Only generate the 3 simplest UI navigation tests. Simple checks: landing page navigation, sidebar navigation between Playground and Configuration, viewing configuration settings.",
+    "serverMode": "production",
+    "envs": {
+      "API_KEY": "sk-user-VXST4Jyo6jdoMqbJrFbl_cjXEbM4EfAqAZcJvQzl-eTj9v5VtbsKYjSYctAmzDCdqFX0N0UA9neaEhdhNXBtbQ_TchnNLXNxLWtYQHUhIu_u-xrPbrFuQ5A-cYkzCNQE53E"
+    }
+  },
+  "serverPort": 59472
+}

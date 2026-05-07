@@ -1,0 +1,443 @@
+[
+  {
+    "id": "TC001",
+    "title": "Upload case documents and receive a cited answer",
+    "description": "This verifies that a legal user can upload litigation files, ask a question, and receive an analysis response with source citations.",
+    "category": "Document question answering in Playground",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /playground"
+      },
+      {
+        "type": "action",
+        "description": "Upload valid litigation documents in supported formats"
+      },
+      {
+        "type": "action",
+        "description": "Ask a question about contradictions or date conflicts in the uploaded documents"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an analysis response is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify source citations are displayed with the response"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "See the upload prompt before asking a question",
+    "description": "This verifies that a user entering Playground without files is prompted to upload documents before they can ask questions.",
+    "category": "Document question answering in Playground",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /playground"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty state message prompting document upload is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the question input is not ready for use until documents are added"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Preserve Playground state when switching away and back",
+    "description": "This test verifies that a user who opens the Playground empty state and switches to Configuration can return to the Playground without losing the current view state.",
+    "category": "Sidebar navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Playground view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty state prompting document upload is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Use the sidebar to switch to Configuration"
+      },
+      {
+        "type": "action",
+        "description": "Use the sidebar to switch back to Playground"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Playground empty state is still displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Continue asking follow-up questions after returning to Playground with existing files",
+    "description": "This verifies that a user revisiting Playground with previously uploaded documents can continue the conversation and still receive source-backed answers.",
+    "category": "Document question answering in Playground",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /playground"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify previously uploaded documents are present"
+      },
+      {
+        "type": "action",
+        "description": "Ask a follow-up question about the existing documents"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a new source-backed answer is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Update provider settings and save changes",
+    "description": "This test verifies that a user can edit AI provider configuration values and save them successfully, resulting in a visible confirmation that the changes were applied.",
+    "category": "AI model provider configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Configuration view"
+      },
+      {
+        "type": "action",
+        "description": "Update the provider configuration values with valid edits"
+      },
+      {
+        "type": "action",
+        "description": "Save the changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a success confirmation is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated provider settings are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Switch from Playground to Configuration and back while preserving views",
+    "description": "This verifies that the sidebar can move between Playground and Configuration and that each destination loads the correct view when revisited.",
+    "category": "Landing page navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /playground"
+      },
+      {
+        "type": "action",
+        "description": "Use the sidebar to open Configuration"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Configuration view is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Use the sidebar to return to Playground"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Playground view is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Explore the home page and reach a product destination",
+    "description": "This verifies that a prospective customer can use the marketing home page to navigate into a product area and arrive at the expected destination view.",
+    "category": "Landing page navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the primary entry point to the app"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the destination view is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the app shell navigation is available"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Switch from Playground to Configuration",
+    "description": "This test verifies that a user can move from the Playground to the Configuration view using the sidebar and see the configuration screen load correctly.",
+    "category": "Sidebar navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Playground view"
+      },
+      {
+        "type": "action",
+        "description": "Use the sidebar to switch to Configuration"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Configuration view is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Review provider settings and save changes in Configuration",
+    "description": "This verifies that an admin user can open provider settings, make an edit, save it, and see the updated configuration state.",
+    "category": "AI model provider configuration flow",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /configuration"
+      },
+      {
+        "type": "action",
+        "description": "Review the current provider settings"
+      },
+      {
+        "type": "action",
+        "description": "Edit a provider setting value"
+      },
+      {
+        "type": "action",
+        "description": "Save the configuration changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated provider settings are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a save confirmation is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Open the demo request popup from the home page",
+    "description": "This verifies that a visitor can open the demo request popup from the marketing page and see the modal appear.",
+    "category": "Book a demo popup",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the demo request action"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the demo popup is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the underlying page remains visible behind the popup"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Keep updated provider settings after leaving and returning",
+    "description": "This test verifies that after saving provider changes, the user can switch to Playground and return to Configuration without losing the saved settings.",
+    "category": "AI model provider configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Configuration view"
+      },
+      {
+        "type": "action",
+        "description": "Update the provider configuration values with valid edits"
+      },
+      {
+        "type": "action",
+        "description": "Save the changes"
+      },
+      {
+        "type": "action",
+        "description": "Use the sidebar to switch to Playground"
+      },
+      {
+        "type": "action",
+        "description": "Use the sidebar to switch back to Configuration"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated provider settings are still displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Load the Configuration view from the app shell",
+    "description": "This test verifies that the Configuration area can be opened directly from within the app shell and shows the provider settings interface.",
+    "category": "AI model provider configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Configuration view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify provider settings are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Review provider settings before editing",
+    "description": "This test verifies that a user can inspect the current AI provider configuration values before making changes and that the settings screen remains readable and complete.",
+    "category": "AI model provider configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Configuration view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the available provider settings are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC014",
+    "title": "Load Configuration from direct in-app navigation after starting in Playground",
+    "description": "This test verifies that a user starting in Playground can directly navigate to Configuration from the app shell and see the expected destination view load.",
+    "category": "Sidebar navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Playground view"
+      },
+      {
+        "type": "action",
+        "description": "Use the sidebar to switch to Configuration"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Configuration view is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC015",
+    "title": "Ask a question in Playground without uploading documents",
+    "description": "This verifies that the Playground blocks unanswered document questions until files are uploaded and shows the expected guidance message.",
+    "category": "Document question answering in Playground",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /playground"
+      },
+      {
+        "type": "action",
+        "description": "Enter a question without uploading any documents"
+      },
+      {
+        "type": "action",
+        "description": "Submit the question"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a document upload prompt is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no analysis response is shown"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC016",
+    "title": "Show validation when required provider settings are left empty",
+    "description": "This test verifies that the configuration form blocks invalid empty provider settings and shows validation feedback instead of saving incomplete changes.",
+    "category": "AI model provider configuration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Configuration view"
+      },
+      {
+        "type": "action",
+        "description": "Clear a required provider setting field"
+      },
+      {
+        "type": "action",
+        "description": "Save the changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the configuration changes were not saved"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC017",
+    "title": "Dismiss the demo popup and return to the home page",
+    "description": "This verifies that a visitor can close the demo popup and continue using the landing page without the popup remaining open.",
+    "category": "Book a demo popup",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the demo request action"
+      },
+      {
+        "type": "action",
+        "description": "Close the demo popup"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the popup is no longer displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the home page content is still displayed"
+      }
+    ],
+    "priority": "Low"
+  }
+]

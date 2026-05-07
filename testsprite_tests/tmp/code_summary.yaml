@@ -1,0 +1,41 @@
+project:
+  name: RedFlag
+  description: Find contradictions in case files before opposing counsel does. Upload litigation documents, RedFlag finds contradictions, date conflicts, and cross-reference inconsistencies cited to source.
+
+tech_stack:
+  frontend:
+    - Next.js 14 (React 18)
+    - TypeScript
+    - Tailwind CSS 4
+    - react-markdown
+  backend:
+    - Python >=3.10
+    - FastAPI
+    - Uvicorn
+    - markitdown (PDF, DOCX, PPTX, XLSX)
+    - google-genai
+    - anthropic
+    - openai
+    - groq
+    - llama-index-workflows
+  infrastructure:
+    - uv (Python package manager)
+    - npm (frontend dependencies)
+    - GitHub Actions (CI)
+    - Vercel (deployment)
+
+features:
+  - Landing page with hero section, marketing sections, navigation bar
+  - Playground view for interacting with document analysis
+  - Configuration panel for AI model provider settings
+  - Litigation file intelligence - contradiction detection, cross-reference mapping, amendment chain tracking
+  - Sidebar navigation between Playground and Configuration views
+
+pages:
+  - / (landing page with #hero, #how-it-works, sections)
+  - Playground view
+  - Configuration view
+
+testing:
+  frontend_ui: Playwright via Python tests
+  backend: pytest

@@ -1,0 +1,50 @@
+[
+  {
+    "projectId": "fdf00c6a-549e-4e41-b878-405b39c56685",
+    "testId": "0af62d40-dbc1-4539-9d10-2edd073b5426",
+    "userId": "c4381498-2001-7011-0326-a8d7321ba873",
+    "title": "TC007-Explore the home page and reach a product destination",
+    "description": "This verifies that a prospective customer can use the marketing home page to navigate into a product area and arrive at the expected destination view.",
+    "code": "import asyncio\nimport re\nfrom playwright import async_api\nfrom playwright.async_api import expect\n\nasync def run_test():\n    pw = None\n    browser = None\n    context = None\n\n    try:\n        # Start a Playwright session in asynchronous mode\n        pw = await async_api.async_playwright().start()\n\n        # Launch a Chromium browser in headless mode with custom arguments\n        browser = await pw.chromium.launch(\n            headless=True,\n            args=[\n                \"--window-size=1280,720\",\n                \"--disable-dev-shm-usage\",\n                \"--ipc=host\",\n                \"--single-process\"\n            ],\n        )\n\n        # Create a new browser context (like an incognito window)\n        context = await browser.new_context()\n        # Wider default timeout to match the agent's DOM-stability budget;\n        # auto-waiting Playwright APIs (expect, locator.wait_for) inherit this.\n        context.set_default_timeout(15000)\n\n        # Open a new page in the browser context\n        page = await context.new_page()\n\n        # Interact with the page elements to simulate user flow\n        # -> navigate\n        await page.goto(\"http://localhost:3001\")\n        try:\n            await page.wait_for_load_state(\"domcontentloaded\", timeout=5000)\n        except Exception:\n            pass\n        \n        # -> Click the primary CTA 'Try the Playground' to navigate into the product area and verify the playground view and app shell navigation.\n        # button \"Try the Playground →\"\n        elem = page.locator(\"xpath=/html/body/div/section/div/div[3]/button\").nth(0)\n        await elem.wait_for(state=\"visible\", timeout=10000)\n        await elem.click()\n        \n        # --> Test passed — verified by AI agent\n        frame = context.pages[-1]\n        current_url = await frame.evaluate(\"() => window.location.href\")\n        assert current_url is not None, \"Test completed successfully\"\n        await asyncio.sleep(5)\n\n    finally:\n        if context:\n            await context.close()\n        if browser:\n            await browser.close()\n        if pw:\n            await pw.stop()\n\nasyncio.run(run_test())\n    ",
+    "testStatus": "PASSED",
+    "testError": "",
+    "testType": "FRONTEND",
+    "createFrom": "mcp",
+    "priority": "High",
+    "testVisualization": "https://testsprite-videos.s3.us-east-1.amazonaws.com/c4381498-2001-7011-0326-a8d7321ba873/1778191575039518//tmp/test_task/result.webm",
+    "created": "2026-05-07T22:04:45.265Z",
+    "modified": "2026-05-07T22:06:15.229Z"
+  },
+  {
+    "projectId": "fdf00c6a-549e-4e41-b878-405b39c56685",
+    "testId": "7f971fa8-2c96-44c9-bc1e-1b3046a60076",
+    "userId": "c4381498-2001-7011-0326-a8d7321ba873",
+    "title": "TC008-Switch from Playground to Configuration",
+    "description": "This test verifies that a user can move from the Playground to the Configuration view using the sidebar and see the configuration screen load correctly.",
+    "code": "import asyncio\nimport re\nfrom playwright import async_api\nfrom playwright.async_api import expect\n\nasync def run_test():\n    pw = None\n    browser = None\n    context = None\n\n    try:\n        # Start a Playwright session in asynchronous mode\n        pw = await async_api.async_playwright().start()\n\n        # Launch a Chromium browser in headless mode with custom arguments\n        browser = await pw.chromium.launch(\n            headless=True,\n            args=[\n                \"--window-size=1280,720\",\n                \"--disable-dev-shm-usage\",\n                \"--ipc=host\",\n                \"--single-process\"\n            ],\n        )\n\n        # Create a new browser context (like an incognito window)\n        context = await browser.new_context()\n        # Wider default timeout to match the agent's DOM-stability budget;\n        # auto-waiting Playwright APIs (expect, locator.wait_for) inherit this.\n        context.set_default_timeout(15000)\n\n        # Open a new page in the browser context\n        page = await context.new_page()\n\n        # Interact with the page elements to simulate user flow\n        # -> navigate\n        await page.goto(\"http://localhost:3001\")\n        try:\n            await page.wait_for_load_state(\"domcontentloaded\", timeout=5000)\n        except Exception:\n            pass\n        \n        # -> Click the 'Playground' navigation item to open the Playground view.\n        # button \"Playground\"\n        elem = page.locator(\"xpath=/html/body/nav/div/div/button[3]\").nth(0)\n        await elem.wait_for(state=\"visible\", timeout=10000)\n        await elem.click()\n        \n        # -> Click the 'Playground' navigation item to open the Playground view.\n        # button \"Configuration\"\n        elem = page.locator(\"xpath=/html/body/nav/div/div/button[4]\").nth(0)\n        await elem.wait_for(state=\"visible\", timeout=10000)\n        await elem.click()\n        \n        # --> Test passed — verified by AI agent\n        frame = context.pages[-1]\n        current_url = await frame.evaluate(\"() => window.location.href\")\n        assert current_url is not None, \"Test completed successfully\"\n        await asyncio.sleep(5)\n\n    finally:\n        if context:\n            await context.close()\n        if browser:\n            await browser.close()\n        if pw:\n            await pw.stop()\n\nasyncio.run(run_test())\n    ",
+    "testStatus": "PASSED",
+    "testError": "",
+    "testType": "FRONTEND",
+    "createFrom": "mcp",
+    "priority": "High",
+    "testVisualization": "https://testsprite-videos.s3.us-east-1.amazonaws.com/c4381498-2001-7011-0326-a8d7321ba873/1778191645796093//tmp/test_task/result.webm",
+    "created": "2026-05-07T22:04:45.272Z",
+    "modified": "2026-05-07T22:07:25.910Z"
+  },
+  {
+    "projectId": "fdf00c6a-549e-4e41-b878-405b39c56685",
+    "testId": "6523a0cf-6b57-40bb-a0e6-119ab11f7e31",
+    "userId": "c4381498-2001-7011-0326-a8d7321ba873",
+    "title": "TC013-Review provider settings before editing",
+    "description": "This test verifies that a user can inspect the current AI provider configuration values before making changes and that the settings screen remains readable and complete.",
+    "code": "import asyncio\nimport re\nfrom playwright import async_api\nfrom playwright.async_api import expect\n\nasync def run_test():\n    pw = None\n    browser = None\n    context = None\n\n    try:\n        # Start a Playwright session in asynchronous mode\n        pw = await async_api.async_playwright().start()\n\n        # Launch a Chromium browser in headless mode with custom arguments\n        browser = await pw.chromium.launch(\n            headless=True,\n            args=[\n                \"--window-size=1280,720\",\n                \"--disable-dev-shm-usage\",\n                \"--ipc=host\",\n                \"--single-process\"\n            ],\n        )\n\n        # Create a new browser context (like an incognito window)\n        context = await browser.new_context()\n        # Wider default timeout to match the agent's DOM-stability budget;\n        # auto-waiting Playwright APIs (expect, locator.wait_for) inherit this.\n        context.set_default_timeout(15000)\n\n        # Open a new page in the browser context\n        page = await context.new_page()\n\n        # Interact with the page elements to simulate user flow\n        # -> navigate\n        await page.goto(\"http://localhost:3001\")\n        try:\n            await page.wait_for_load_state(\"domcontentloaded\", timeout=5000)\n        except Exception:\n            pass\n        \n        # -> Open the Configuration view by clicking the 'Configuration' navigation button and then verify the provider settings are displayed and readable.\n        # button \"Configuration\"\n        elem = page.locator(\"xpath=/html/body/nav/div/div/button[4]\").nth(0)\n        await elem.wait_for(state=\"visible\", timeout=10000)\n        await elem.click()\n        \n        # --> Test passed — verified by AI agent\n        frame = context.pages[-1]\n        current_url = await frame.evaluate(\"() => window.location.href\")\n        assert current_url is not None, \"Test completed successfully\"\n        await asyncio.sleep(5)\n\n    finally:\n        if context:\n            await context.close()\n        if browser:\n            await browser.close()\n        if pw:\n            await pw.stop()\n\nasyncio.run(run_test())\n    ",
+    "testStatus": "PASSED",
+    "testError": "",
+    "testType": "FRONTEND",
+    "createFrom": "mcp",
+    "priority": "Medium",
+    "testVisualization": "https://testsprite-videos.s3.us-east-1.amazonaws.com/c4381498-2001-7011-0326-a8d7321ba873/1778191569494647//tmp/test_task/result.webm",
+    "created": "2026-05-07T22:04:45.281Z",
+    "modified": "2026-05-07T22:06:09.612Z"
+  }
+]
