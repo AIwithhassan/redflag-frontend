@@ -1,0 +1,6 @@
+{
+  "version": "1",
+  "localPort": 3001,
+  "type": "frontend",
+  "testScope": "codebase"
+}
